@@ -101,7 +101,6 @@ func handleConn(conn net.Conn) {
 // 消息出口，所有出口消息都加密了
 func clientWriter(conn net.Conn, ch <-chan string) {
 	for msg := range ch {
-		fmt.Println("DEBUG: clientWriter: msg", msg)
 		encryptedMsg, err := encrypt([]byte(msg))
 		if err != nil {
 			fmt.Println(err)
